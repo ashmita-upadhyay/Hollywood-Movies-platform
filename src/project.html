@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+<style>
+body {
+ 
+font-family: Arial, sans-serif; background-color:#FFE5B4; display: flex;
+justify-content: center; align-items: center;
+height: 100vh; margin: 0;
+}
+
+
+.container {
+background-color: white; padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 300px;
+}
+
+
+h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+
+input[type="text"], input[type="email"], input[type="password"] {
+width: 100%; padding: 10px; margin: 10px 0;
+border: 1px solid #ccc;
+ 
+border-radius: 4px;
+}
+
+
+input[type="submit"] { width: 100%; padding: 10px;
+background-color: #28a745; color: white;
+border: none; border-radius: 4px; cursor: pointer;
+}
+
+
+input[type="submit"]:hover { background-color: #218838;
+}
+
+
+.error {
+color: red;
+font-size: 0.9em;
+margin-bottom: 10px;
+}
+</style>
+</head>
+
+
+<body>
+<div class="container">
+<h2>Registration form of Ashmita
+</h2>
+ 
+<form id="registrationForm">
+<div class="error" id="error"></div>
+<input type="text" id="username" placeholder="Username" required>
+<input type="email" id="email" placeholder="E-mail ID" required>
+<input type="text" id="location" placeholder="Location" required>
+<input type="text" id="contact" placeholder="Contact Number" required>
+<input type="password" id="password" placeholder="Password" required>
+<input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+<input type="submit" value="Register">
+</form>
+</div>
+
+
+<script>
+const form = document.getElementById('registrationForm'); const errorDiv = document.getElementById('error');
+
+form.addEventListener('submit', function(event) { event.preventDefault();
+const username = document.getElementById('username').value; const email = document.getElementById('email').value;
+const location = document.getElementById('location').value; const contact = document.getElementById('contact').value; const password = document.getElementById('password').value;
+const confirmPassword = document.getElementById('confirmPassword').value;
+
+
+let errorMessages = [];
+if (password !== confirmPassword) {
+errorMessages.push('Passwords do not match.');
+}
+ 
+if (contact.length !== 10 || isNaN(contact)) {
+errorMessages.push('Contact number must be a 10-digit number.');
+}
+
+
+if (errorMessages.length > 0) {
+errorDiv.textContent = errorMessages.join(' ');
+} else {
+errorDiv.textContent = '';
+alert('Registration successful!');
+}
+});
+</script>
+</body>
+
+
+</html>
+
